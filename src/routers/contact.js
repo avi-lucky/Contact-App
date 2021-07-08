@@ -12,10 +12,9 @@ router.get('/', function (req, res, next) {
 router.post('/contact', async (req, res,) => {
   const contact = new Contact ({
     name: req.body.name,
-    phone: req.body.phone,
+    phone: parseInt(req.body.phone),
     email: req.body.email
   })
-
   try {
      await contact.save()
       res.status(201).send(contact)

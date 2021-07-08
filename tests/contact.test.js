@@ -9,25 +9,48 @@ const contactOne = {
     email: 'ankita07@example.com'
 }
 
-beforeEach(async () => {
-    await Contact.deleteMany()
-    await new Contact(contactOne).save()
-})
+const contactTwo = {
+    name: 'Summit',
+    phone: '9876543210',
+    email: 'summit21@gmail.com'
+}
+
+var id
 
 // create new contact
 test('Should create a new contact', async () => {
-    await request(app).post('/contact').send({
-        name: 'Archit',
-        phone: '9876543212',
-        email: 'archit07@example.com'
-    }).expect(201)
+    await request(app).post('/contact')
+    .send({
+        name: contactOne.name,
+        phone: contactOne.phone,
+        email: contactOne.email
+    })
+    .expect((res) => {id = res.body._id})
+    .expect(201)
+})
+
+// should read contact
+test('Should read all contact', async () => {
+    const response = await request(app).get('/contact')
+    .expect(200)
+    expect(response.body[0].name).toEqual(contactOne.name)
+})
+
+// update contact
+test('Should update a contact', async () => {
+    await request(app).patch(`/contact/${id}`)
+    .send({
+        name: contactTwo.name,
+        phone: contactTwo.phone,
+        email: contactTwo.email
+    })
+    .expect(200)
 })
 
 // delete contact
 test('Should delete a contact', async () => {
     await request(app)
-    .delete('/contact/:id')
-    const contact = await Contact.findByIdAndDelete(_id)
+    .delete(`/contact/${id}/delete`)
     .send()
-    expect(Contact).toBeNull()
+    .expect(200);
 })
