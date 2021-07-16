@@ -1,7 +1,4 @@
 axios.get('/contact', {
-  // name: name,
-  // phone: phone,
-  // email: email,
 })
 .then(function (response) {
   console.log(response);
@@ -45,7 +42,6 @@ function addContact() {
   .catch(function (error) {
     console.log(error);
   });
-
 }
 
 // delete contact
@@ -62,7 +58,6 @@ function deleteContact(id) {
   .catch(function (error) {
     console.log(error);
   });
-  
 }
 
 // update contact
@@ -86,5 +81,4 @@ function updateContact(id) {
   .catch(function (error) {
     console.log(error);
   });
-
 }

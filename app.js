@@ -1,10 +1,9 @@
 const express = require('express')
 const db = require('./db/mongoose')
 const contactRouter = require('./src/routers/contact')
+const userRouter = require('./src/routers/user')
 const path = require('path')
 const http = require('http')
-
-
 
 const app = express();
 
@@ -15,16 +14,16 @@ app.use(express.static(publicDirectoryPath))
 
 app.use(express.json())
 app.use(contactRouter)
+app.use(userRouter)
 
-// app.get('/', (req, res) => {
-//     const contact = new Contact(req.body)
-    
-//     contact.save().then(() => {
-//         res.send(contact)
-//     }).catch((e) => {
-//         res.status(400).send(e)
-//     })
-// })
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({ _id:  '60ed4843479c3d1ff715ba6a' }, 'thisismynewproject');
+
+// console.log(token)
+
+jwt.verify(token, 'thisismynewproject', function(err, token) {
+    // console.log(token)
+  })
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}!`)

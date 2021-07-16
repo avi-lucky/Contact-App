@@ -10,12 +10,6 @@ const contactSchema = new mongoose.Schema({
     phone: {
         type: Number,
         required: true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /d{10}/.test(v);
-        //     },
-        //     message: '{VALUE} is not a valid 10 digit number!'
-        // }
     },
     email: {
         type: String,
@@ -27,10 +21,14 @@ const contactSchema = new mongoose.Schema({
                 throw new Error('Email is invalid')
             }
         }
+    },
+    owner: {
+        type: mongoose.Schema.Types.String,
+        required: true,
+        ref: 'User'
     }
 })
 
 const Contact = mongoose.model('Contact', contactSchema)
-
 
 module.exports = Contact
