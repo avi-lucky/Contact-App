@@ -4,9 +4,9 @@ const Contact = require('../models/contact')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.get('/', function (req, res, next) {
-	res.render('contact', { title: ' What we have to do?' });
-});
+// router.get('/', function (req, res, next) {
+// 	res.render('contact', { title: ' What we have to do?' });
+// });
 
 // create new contact
 router.post('/contact', auth, async (req, res,) => {

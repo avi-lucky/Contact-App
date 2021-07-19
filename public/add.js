@@ -1,4 +1,7 @@
 axios.get('/contact', {
+  headers: {
+    Authorization: ('Bearer ', localStorage.getItem("token"))
+  },
 })
 .then(function (response) {
   console.log(response);
@@ -22,7 +25,11 @@ axios.get('/contact', {
   let form = document.getElementById('updateContact');
 })
 .catch(function (error) {
-  console.log(error);
+  if (error.response) 
+    console.log(localStorage.token)
+    console.log(error.response.data);
+    console.log(error.response.status);
+    console.log(error.response.headers);
 });
 
 // add contact
@@ -34,10 +41,14 @@ function addContact() {
    name: name,
    phone: phone,
    email: email
-  })
+  },{
+  headers: {
+    Authorization : ('Bearer ', localStorage.getItem("token"))
+  }})
   .then(function (response) {
-    console.log(response);
+    console.log(response)
     console.log(response.data)
+    location.reload()
   })
   .catch(function (error) {
     console.log(error);
@@ -49,6 +60,9 @@ function deleteContact(id) {
   console.log("Tet")
   console.log(id)
   axios.delete("/contact/"+ id + "/delete", {
+    headers: {
+      Authorization : ('Bearer ', localStorage.getItem("token"))
+    },
   })
   .then(function (response) {
     console.log(response);
@@ -73,7 +87,10 @@ function updateContact(id) {
     name: name,
     phone: phone,
     email: email
-  })
+  },{
+  headers: {
+    Authorization : ('Bearer ', localStorage.getItem("token"))
+  }})
   .then(function (response) {
     console.log(response);
     console.log(response.data)
@@ -82,3 +99,4 @@ function updateContact(id) {
     console.log(error);
   });
 }
+

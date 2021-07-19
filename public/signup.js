@@ -9,11 +9,10 @@ function signUp() {
      password: password
   })
   .then(function (response) {
-    // localStorage.setItem('token', token)
-    // res.send({ user, token })
     console.log(response);
     console.log(response.data)
-    // res.send({ user, token })
+    console.log('Successfully User Created!')
+    location.replace('/signin.html')
   })
   .catch(function (error) {
     console.log(error);

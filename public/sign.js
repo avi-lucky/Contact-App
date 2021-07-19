@@ -7,13 +7,14 @@ function logIn() {
    password: password,
   })
   .then(function (response) {
-    // localStorage.setItem('token', token)
-    // res.send({ user, token })
+    localStorage.setItem('token', response.data.token)
+    // res.send( user, response.data.token )
     console.log(response);
-    console.log(response.data)
-    // res.send({ user, token })
+    console.log(response.data.token)
+    location.replace('/index.html')
   })
   .catch(function (error) {
     console.log(error);
   })
 }
+
