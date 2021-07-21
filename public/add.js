@@ -107,12 +107,13 @@ function logOut() {
   },
     {
     headers: {
-      Authorization : ('Bearer', localStorage.getItem("token"))
+      Authorization : ('Bearer ', localStorage.getItem("token"))
     }
   }).then((response) => {
     console.log("Logged Out")
     localStorage.removeItem("token");
-  }).catch ((error) =>  {
+    location.replace('/signin.html')
+  }).catch ((error) => {
     console.log(error)
     console.log(localStorage.getItem("token"))
   })
