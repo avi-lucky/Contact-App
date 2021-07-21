@@ -11,7 +11,9 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <title>Contact List</title>
-</head>
+<div class="right ">
+  <button onclick="logOut()" action="logOut" type="submit" form="nameform" value="Submit" style="background-color:#f0f0f0; height:40px; margin-top: 0%">Log Out</button>
+</div>
 <style>
     .header {
       margin: auto;
@@ -21,11 +23,16 @@
     }
     .center {
         text-align: center;
-}
-    .h2  {
+    }
+    .right {
+        text-align: right;
+    }
+    .h2 {
         text-align: center;
     }
     </style>
+    </head>
+
 <body>
     <div class="center">
         <h2 style="margin:50px">Contact List</h2>
@@ -44,7 +51,7 @@
       </div>
       <div class="center">
         <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 5%">Add Contact</button>
-    </div>
+      </div>
 
     <table id=list></table>
 

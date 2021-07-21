@@ -100,3 +100,20 @@ function updateContact(id) {
   });
 }
 
+// logout
+function logOut() {
+  console.log(localStorage.getItem("token"))
+  axios.post('/users/logout', {
+  },
+    {
+    headers: {
+      Authorization : ('Bearer', localStorage.getItem("token"))
+    }
+  }).then((response) => {
+    console.log("Logged Out")
+    localStorage.removeItem("token");
+  }).catch ((error) =>  {
+    console.log(error)
+    console.log(localStorage.getItem("token"))
+  })
+}

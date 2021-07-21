@@ -23,8 +23,9 @@ app.use(userRouter)
 
 var jwt = require('jsonwebtoken');
 const User = require('./src/models/user')
-var token = jwt.sign({ _id:  '60ed4843479c3d1ff715ba6a' }, 'thisismynewproject');
-
+var token = jwt.sign({ _id:  '60ed4843479c3d1ff715ba6a' }, 'thisismynewproject', {
+  expiresIn: '3 seconds'
+});
 // console.log(token)
 
 jwt.verify(token, 'thisismynewproject', function(err, token) {

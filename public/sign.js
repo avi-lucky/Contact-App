@@ -1,6 +1,6 @@
 // login
 function logIn() {
-    const email = document.getElementById("email").value  
+    const email = document.getElementById("email").value 
     const password = document.getElementById("password").value
   axios.post("/users/login", {
    email: email,

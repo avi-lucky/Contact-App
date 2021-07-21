@@ -11,7 +11,6 @@ function signUp() {
   .then(function (response) {
     console.log(response);
     console.log(response.data)
-    console.log('Successfully User Created!')
     location.replace('/signin.html')
   })
   .catch(function (error) {
